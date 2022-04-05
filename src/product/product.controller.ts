@@ -37,6 +37,8 @@ export class ProductController implements OnModuleInit {
   private async createProduct(
     @Body() body: CreateProductRequest,
   ): Promise<Observable<CreateProductResponse>> {
+    // console.log('[ProductController::createProduct]');
+    // console.log(body);
     return this.svc.createProduct(body);
   }
 
@@ -45,6 +47,8 @@ export class ProductController implements OnModuleInit {
   private async findOne(
     @Param('id', ParseIntPipe) id: number,
   ): Promise<Observable<FindOneResponse>> {
+    // console.log('[ProductController::findOne]');
+    // console.log(`id: ${id}`);
     return this.svc.findOne({ id });
   }
 }

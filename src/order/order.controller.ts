@@ -33,10 +33,13 @@ export class OrderController implements OnModuleInit {
   private async createOrder(
     @Req() req: Request,
   ): Promise<Observable<CreateOrderResponse>> {
-    const body: CreateOrderRequest = req.body;
-
-    // body.userId = <number>req.user;
-    body.userId = <number>req.body.user;
+    const body: CreateOrderRequest = {
+      productId: parseInt(req.body.productId),
+      quantity: parseInt(req.body.quantity),
+      userId: <number>req.body.userId,
+    };
+    // console.log('[OrderController::createOrder]');
+    // console.log(body);
 
     return this.svc.createOrder(body);
   }

@@ -10,7 +10,7 @@ import { PRODUCT_PACKAGE_NAME, PRODUCT_SERVICE_NAME } from './product.pb';
         name: PRODUCT_SERVICE_NAME,
         transport: Transport.GRPC,
         options: {
-          url: '0.0.0.0:50053',
+          url: '0.0.0.0:10053',
           package: PRODUCT_PACKAGE_NAME,
           protoPath: 'node_modules/grpc-proto/proto/product.proto',
         },

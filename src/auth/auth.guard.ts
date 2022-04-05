@@ -18,13 +18,11 @@ export class AuthGuard implements CanActivate {
   public async canActivate(ctx: ExecutionContext): Promise<boolean> | never {
     const req: Request = ctx.switchToHttp().getRequest();
     const authorization: string = req.headers['authorization'];
-
     if (!authorization) {
       throw new UnauthorizedException();
     }
 
     const bearer: string[] = authorization.split(' ');
-
     if (!bearer || bearer.length < 2) {
       throw new UnauthorizedException();
     }
@@ -36,7 +34,7 @@ export class AuthGuard implements CanActivate {
     );
 
     // req.user = userId;
-    req.body.user = userId;
+    req.body.userId = userId;
 
     if (status !== HttpStatus.OK) {
       throw new UnauthorizedException();
